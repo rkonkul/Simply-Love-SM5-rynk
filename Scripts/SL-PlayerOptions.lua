@@ -529,13 +529,13 @@ local Overrides = {
 		Values = function()
 			local vals = {}
 			if IsUsingWideScreen() then
-				vals = { "JudgmentTilt", "ColumnCues" }
+				vals = { "ColumnCues" }
 				if IsServiceAllowed(SL.GrooveStats.GetScores) then
 					vals[#vals+1] = "DisplayScorebox"
 				end
 			else
 				-- Add in the two removed options if not in WideScreen.
-				vals = { "MissBecauseHeld", "NPSGraphAtTop", "JudgmentTilt", "ColumnCues" }
+				vals = { "MissBecauseHeld", "NPSGraphAtTop", "ColumnCues" }
 			end
 			return vals
 		end
@@ -549,6 +549,14 @@ local Overrides = {
 			end
 			return vals
 		end
+	},
+	JudgmentTilt = {
+		SelectType = "SelectOne",
+		Values = { "None", "JudgmentTilt1","JudgmentTilt2","JudgmentTilt3","JudgmentTilt4" }
+	},
+	JudgmentPosition = {
+		SelectType = "SelectOne",
+		Values = { "Default", "MoveUp", "MoveUp2" }
 	},
 	ErrorBar = {
 		Values = { "None", "Colorful", "Monochrome", "Text" },

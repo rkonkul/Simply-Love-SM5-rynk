@@ -34,7 +34,8 @@ local PlayerDefaults = {
 				LifeMeterType = "Standard",
 				MissBecauseHeld = false,
 				NPSGraphAtTop = false,
-				JudgmentTilt = false,
+				JudgmentTilt = "None",
+				JudgmentPosition = "None",
 				ColumnCues = false,
 				DisplayScorebox = true,
 

@@ -81,11 +81,25 @@ return Def.ActorFrame{
 
 		sprite:visible(true):setstate(frame)
 
-		if mods.JudgmentTilt then
+		if mods.JudgmentTilt ~= "None" then
 			if tns ~= "Miss" then
 				-- How much to rotate.
 				-- We cap it at 50ms (15px) since anything after likely to be too distracting.
-				local offset = math.min(math.abs(param.TapNoteOffset), 0.050) * 300
+                local tilt = 300
+                local maxTilt = 0.050
+                if mods.JudgmentTilt == "JudgmentTilt2" then
+                    tilt = 400
+                    maxTilt = 0.065
+                end
+                if mods.JudgmentTilt == "JudgmentTilt3" then
+                    tilt = 800
+                    maxTilt = 0.080
+                end
+                if mods.JudgmentTilt == "JudgmentTilt4" then
+                    tilt = 3600
+                    maxTilt = 1
+                end
+				local offset = math.min(math.abs(param.TapNoteOffset), maxTilt) * tilt
 				-- Which direction to rotate.
 				local direction = param.TapNoteOffset < 0 and -1 or 1
 				sprite:rotationz(direction * offset)
@@ -93,6 +107,11 @@ return Def.ActorFrame{
 				-- Reset rotations on misses so it doesn't use the previous note's offset.
 				sprite:rotationz(0)
 			end
+		end
+		if mods.JudgmentPosition == "MoveUp" then
+			sprite:y(-15)
+		elseif mods.JudgmentPosition == "MoveUp2" then
+			sprite:y(-25)
 		end
 		-- this should match the custom JudgmentTween() from SL for 3.95
 		sprite:zoom(0.8):decelerate(0.1):zoom(0.75):sleep(0.6):accelerate(0.2):zoom(0)

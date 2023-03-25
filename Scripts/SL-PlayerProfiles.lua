@@ -53,6 +53,8 @@ local permitted_profile_settings = {
 	ColumnCues           = "boolean",
 	DisplayScorebox      = "boolean",
 
+	JudgmentTilt         = "string",
+	JudgmentPosition     = "string",
 	ErrorBar             = "string",
 	ErrorBarUp           = "boolean",
 	ErrorBarMultiTick    = "boolean",
